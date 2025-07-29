@@ -1,14 +1,29 @@
-const url = "https://script.google.com/macros/s/AKfycbw63l_2KP4G9Wzwv3nnLGiGU_ovlYwaB1uTqbCDCtXJ9-aprg52vR505fRONXcrCzSp/exec"; // ← înlocuiește cu URL-ul real de Web App
-fetch(url)
+const SCRIPT_URL = "https://script.google.com/macros/s/ID_TAU/exec"; // Înlocuiește cu URL-ul Web App real
+
+fetch(SCRIPT_URL)
   .then(response => response.json())
   .then(data => {
     const tbody = document.querySelector("#clasament tbody");
-    data.forEach(echipa => {
-      const row = document.createElement("tr");
-      row.innerHTML = `<td>${echipa.Nume}</td><td>${echipa.Puncte}</td>`;
-      tbody.appendChild(row);
+    tbody.innerHTML = "";
+
+    data.forEach(row => {
+      const nume = row[0];     // prima coloană din Sheet = Nume
+      const puncte = row[1];   // a doua coloană din Sheet = Puncte
+
+      const tr = document.createElement("tr");
+
+      const tdNume = document.createElement("td");
+      tdNume.textContent = nume;
+
+      const tdPuncte = document.createElement("td");
+      tdPuncte.textContent = puncte;
+
+      tr.appendChild(tdNume);
+      tr.appendChild(tdPuncte);
+
+      tbody.appendChild(tr);
     });
   })
-  .catch(err => {
-    console.error("Eroare la preluarea clasamentului:", err);
+  .catch(error => {
+    console.error("Eroare la încărcarea clasamentului:", error);
   });
