@@ -5,7 +5,7 @@ fetch(url)
     const tbody = document.querySelector("#clasament tbody");
     data.forEach(echipa => {
       const row = document.createElement("tr");
-      row.innerHTML = `<td>${echipa.Echipa}</td><td>${echipa.Puncte}</td>`;
+      row.innerHTML = `<td>${echipa.Nume}</td><td>${echipa.Puncte}</td>`;
       tbody.appendChild(row);
     });
   })
