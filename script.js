@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/ID_TAU/exec"; // Înlocuiește cu URL-ul Web App real
+const SCRIPT_URL = "https://script.google.com/macros/s/1kTwaNUC4mSdOKC0CY0r1yxUy_Pw1I-QSq0mKJA4qBZw/exec"; // Înlocuiește cu URL-ul Web App real
 
 fetch(SCRIPT_URL)
   .then(response => response.json())
